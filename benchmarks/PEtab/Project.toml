@@ -1,0 +1,19 @@
+name = "PEtab"
+uuid = "4d304d59-8f3b-4ed4-a5eb-fe6e92203845"
+authors = ["paulflang "]
+version = "0.1.0"
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+JuliaSimModelOptimizer = "e76a656c-db09-4a9a-8f5e-6a4d9ca4a950"
+ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
+Optim = "429524aa-4258-5aef-a3af-852621145aeb"
+Optimization = "7f7a1694-90dd-40f0-9382-eb1efda571ba"
+OptimizationBBO = "3e6eede4-6085-4f62-9a71-46d9bc1eb92b"
+OptimizationMultistartOptimization = "e4316d97-8bbb-4fd3-a7d8-3851d2a72823"
+OptimizationPolyalgorithms = "500b13db-7e66-49ce-bda4-eed966be6282"
+PumasQSP = "5526fe93-3145-4cc2-889a-1fb5ef00f63e"
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
