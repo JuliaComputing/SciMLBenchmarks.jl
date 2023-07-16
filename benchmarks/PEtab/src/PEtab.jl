@@ -2,6 +2,7 @@ module PEtab
 
 using Downloads
 using SHA
+using YAML
 
 function check_benchmark(dir, benchmarkname, hash)
     temp_file = joinpath(dir, "temp.txt")
@@ -24,15 +25,21 @@ function download_benchmark(dir, benchmarkname, hash)
     url = "https://raw.githubusercontent.com/Benchmarking-Initiative/Benchmark-Models-PEtab/master/Benchmark-Models/$(benchmarkname)"
 
     mkpath(dir)
-    filenames = [
-        "$(benchmarkname).yaml",
-        "experimentalCondition_$(benchmarkname).tsv",
-        "measurementData_$(benchmarkname).tsv",
-        "model_$(benchmarkname).xml",
-        "observables_$(benchmarkname).tsv",
-        "parameters_$(benchmarkname).tsv",
-        "simulatedData_$(benchmarkname).tsv",
-        "visualizationSpecification_$(benchmarkname).tsv"]
+    Downloads.download(url * "/" * "$(benchmarkname).yaml", joinpath(dir, "$(benchmarkname).yaml"))
+    petab_yaml = YAML.load_file(joinpath(dir, "$(benchmarkname).yaml"))
+    filenames = [petab_yaml["parameter_file"]]
+    for item in keys(only(petab_yaml["problems"]))  # We don't support multiple problems, condition_files etc. yet.
+        push!(filenames, only(only(petab_yaml["problems"])[item]))
+    end
+    # filenames = [
+    #     "$(benchmarkname).yaml",
+    #     "experimentalCondition_$(benchmarkname).tsv",
+    #     "measurementData_$(benchmarkname).tsv",
+    #     "model_$(benchmarkname).xml",
+    #     "observables_$(benchmarkname).tsv",
+    #     "parameters_$(benchmarkname).tsv",
+    #     "simulatedData_$(benchmarkname).tsv",
+    #     "visualizationSpecification_$(benchmarkname).tsv"]
 
     for name in filenames
         try
