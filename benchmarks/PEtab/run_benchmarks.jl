@@ -14,8 +14,8 @@ using PumasQSP
 
 outfile = joinpath(@__DIR__, "results.csv")
 benchmarks = [
-    # ("Alkan_SciSignal2018", "hash123", :auto),  # Requires SBML piecewise fix.
-    # ("Bachmann_MSB2011", "hash123", :auto)  # multiple different observableParameter overrides not supported
+    # # ("Alkan_SciSignal2018", "hash123", :auto),  # Requires SBML piecewise fix.
+    # # ("Bachmann_MSB2011", "hash123", :auto)  # multiple different observableParameter overrides not supported
     ("Beer_MolBioSystems2014", "hash123", :auto),
     # ("Bertozzi_PNAS2020", "hash123", :auto),
     # # ("Blasi_CellSystems2016", "hash123", :auto),  # Postequlibration not yet supported
